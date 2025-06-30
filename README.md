@@ -11,10 +11,6 @@ A mobile app built with **React Native (Expo)** and **Firebase Functions** to sc
 - ✉️ Email notifications via Google Apps Script  
 - 🔒 Secure API with Firebase Secrets & Cloud Run
 
-##
-
-![Dashboard Preview](image1.png)
-
 ## 🛠 Tech Stack
 
 - **Frontend**: React Native (Expo)
@@ -23,10 +19,6 @@ A mobile app built with **React Native (Expo)** and **Firebase Functions** to sc
 - **Storage**: Google Sheets (via Apps Script)
 - **CI/CD**: Firebase CLI
 - **Security**: Firebase Secrets, Custom Service Account
-
-##
-
-![Dashboard Preview](image2.png)
 
 ## 📸 Usage
 
@@ -38,5 +30,5 @@ A mobile app built with **React Native (Expo)** and **Firebase Functions** to sc
 
 ##
 
-![Dashboard Preview](image3.png)
+![Dashboard Preview](image1.png) ![Dashboard Preview](image2.png) ![Dashboard Preview](image3.png)
 
