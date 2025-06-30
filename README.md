@@ -13,7 +13,7 @@ A mobile app built with **React Native (Expo)** and **Firebase Functions** to sc
 
 ##
 
-![Dashboard Preview](image1.jpeg)
+![Dashboard Preview](image1.png)
 
 ## 🛠 Tech Stack
 
