@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "cross-fetch": "^4.1.0",
+    "fetch": "^1.1.0",
+    "firebase-admin": "^11.11.1",
+    "firebase-functions": "^3.24.1"
+  }
+}
