@@ -30,5 +30,5 @@ A mobile app built with **React Native (Expo)** and **Firebase Functions** to sc
 
 ##
 
-![Dashboard Preview](image1.png) ![Dashboard Preview](image2.png) ![Dashboard Preview](image3.png)
+[Watch full demo](ProductDemo.mp4) <!-- link to full video file in repo -->
 
