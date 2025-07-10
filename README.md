@@ -30,5 +30,7 @@ A mobile app built with **React Native (Expo)** and **Firebase Functions** to sc
 
 ##
 
+![Home Screen](HomeScreen.png)![View Packages](ViewPackagesScreen.png)
+
 [Watch full demo](ProductDemo.mp4) <!-- link to full video file in repo -->
 
