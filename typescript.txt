@@ -4,6 +4,7 @@ import { CameraView, Camera, useCameraPermissions } from 'expo-camera'; // For b
 import * as ImageManipulator from 'expo-image-manipulator'; // Resize images for better OCR
 import * as MailComposer from 'expo-mail-composer'; // Compose and send emails
 import { Alert, Text, View, StyleSheet, Button, Modal, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { ImageBackground } from 'react-native';
 
 // Endpoints for Firebase
 const FIREBASE_PROXY_URL = "https://api-o6quombnba-uc.a.run.app";
@@ -317,28 +318,28 @@ if (hasPermission === null) return <Text>Requesting camera permission...</Text>;
 if (hasPermission === false) return <Text>No access to camera.</Text>; // User denied camera access
 
 return (
-  <View style={styles.container}>
-    <Text style={styles.title}>Package Label OCR</Text>
+  <ImageBackground
+    source={require('./assets/high-angle-plane-box.jpg')}
+    style={styles.container}
+    resizeMode="cover"
+  >
+    <Text style={styles.title}>Bell Pack</Text>
 
     {/* Show this block when the camera is not active */}
     {!isCameraActive && (
       <>
         {/* Button to activate the camera and start scanning */}
-        <Button title="Scan Label" onPress={() => {
-          setScanned(false);
-          setBarcodeData(null);
-          setIsCameraActive(true);
-        }} />
+    <TouchableOpacity
+      style={styles.scanButton}
+      onPress={() => {
+        setScanned(false);
+        setBarcodeData(null);
+        setIsCameraActive(true);
+      }}
+    >
+  <Text style={styles.scanButtonText}>Scan Label</Text>
+</TouchableOpacity>
         <View style={{ marginTop: 10 }} />
-
-        {/* Show extracted guest information if available */}
-        {guestInfo?.name && (
-          <View style={styles.guestInfo}>
-            <Text>Name: {guestInfo.name}</Text>
-            <Text>Email: {guestInfo.email}</Text>
-            {guestInfo.room && <Text>Room: {guestInfo.room}</Text>}
-          </View>
-        )}
       </>
     )}
 
@@ -354,8 +355,15 @@ return (
           }}
         />
         {/* Buttons to take picture or cancel scanning */}
-        <Button title="Capture Label" onPress={handleTakePicture} />
-        <Button title="Cancel" onPress={() => setIsCameraActive(false)} />
+        <View style={styles.buttonRow}>
+          <TouchableOpacity style={styles.scanButton} onPress={handleTakePicture}>
+            <Text style={styles.scanButtonText}>Capture Label</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.scanButton} onPress={() => setIsCameraActive(false)}>
+            <Text style={styles.scanButtonText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
       </>
     )}
 
@@ -437,7 +445,7 @@ return (
       </View>
     </View>
   </Modal>
-  </View>
+  </ImageBackground>
   );
 }
 
@@ -445,15 +453,17 @@ const styles = StyleSheet.create({
   // Main container layout for the screen
   container: {
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 75,
     alignItems: 'center',
-    backgroundColor: '#fff', // white background for a clean look
+    justifyContent: 'flex-start',
   },
 
   // Title text at the top of the screen
   title: {
-    fontSize: 24,
-    marginBottom: 20, // spacing below title
+    fontSize: 26,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 20,
   },
 
   // Style for the camera preview window
@@ -487,19 +497,50 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '80%',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+   // elevation: 5, // Android shadow
+  },
+
+  buttonRow: {
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 10,
+  },
+
+  scanButton: {
+    backgroundColor: '#fff',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#000',
+    alignItems: 'center',
+  },
+
+  scanButtonText: {
+    color: '#000',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 
   // Generic button styling used in the modal
   button: {
-    padding: 10,
-    borderRadius: 5,
-    marginHorizontal: 10, // space between buttons
+    backgroundColor: '#0066cc',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginTop: 15,
   },
 
   // Text inside buttons — white and bold
   buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 

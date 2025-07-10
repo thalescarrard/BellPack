@@ -13,9 +13,9 @@ app.use(express.json());
 // Proxy route
 app.all("/proxy", async (req: Request, res: Response) => {
   try {
+    const token = await AUTH_TOKEN.value(); // 🔑 Await this!
     const url = new URL("https://script.google.com/macros/s/AKfycbyTTvZAHUfYBQ1rwFdl389oiLa6E8K0LKkeECwZsz1ljF76mz60W99PpqjsRiRSjTVygw/exec");
-    url.searchParams.append("token", AUTH_TOKEN.value());
-    
+    url.searchParams.append("token", token); // ✅ Correct now!    
     Object.entries(req.query).forEach(([key, value]) =>
       url.searchParams.append(key, String(value))
     );
